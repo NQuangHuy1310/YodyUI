@@ -1,5 +1,5 @@
 import React from 'react'
-import './DetailProducts.css'
+import './DetailProducts.scss'
 const DetailProducts = () => {
     return (
         <div>
@@ -495,12 +495,9 @@ const DetailProducts = () => {
                     </h2>
                 </div>
                 <div className="productcontainer relative w-full max-w-5xl mx-auto">
-                    <div className="button1">
-                        <button id="prevBtn">‹</button>
-                    </div>
                     <div id="productContainer" className="product-daxem flex overflow-x-scroll space-x-4 px-8 gap-10">
                         <div className="products w-64 flex-shrink-0">
-                            <div className="img-product h-40 bg-gray-200"></div>
+                            <div className="img-product h-80 bg-gray-200"></div>
                             <div className="pt-2 xlg:pt-3 flex flex-col flex-grow justify-between">
                                 <div>
                                     <div className="font-medium text-yd-label-3 xlg:text-[14px] text-yd-typo-title line-clamp-1 min-h-[22px] xlg:min-h-[24px] !font-[400] capitalize">
@@ -521,7 +518,7 @@ const DetailProducts = () => {
                         </div>
 
                         <div className="products w-64 flex-shrink-0">
-                            <div className="img-product h-40 bg-gray-200"></div>
+                            <div className="img-product h-80 bg-gray-200"></div>
                             <div className="pt-2 xlg:pt-3 flex flex-col flex-grow justify-between">
                                 <div>
                                     <div className="font-medium text-yd-label-3 xlg:text-[14px] text-yd-typo-title line-clamp-1 min-h-[22px] xlg:min-h-[24px] !font-[400] capitalize">
@@ -542,7 +539,7 @@ const DetailProducts = () => {
                         </div>
 
                         <div className="products w-64 flex-shrink-0">
-                            <div className="img-product h-40 bg-gray-200"></div>
+                            <div className="img-product h-80 bg-gray-200"></div>
                             <div className="pt-2 xlg:pt-3 flex flex-col flex-grow justify-between">
                                 <div>
                                     <div className="font-medium text-yd-label-3 xlg:text-[14px] text-yd-typo-title line-clamp-1 min-h-[22px] xlg:min-h-[24px] !font-[400] capitalize">
@@ -563,7 +560,7 @@ const DetailProducts = () => {
                         </div>
 
                         <div className="products w-64 flex-shrink-0">
-                            <div className="img-product h-40 bg-gray-200"></div>
+                            <div className="img-product h-80 bg-gray-200"></div>
                             <div className="pt-2 xlg:pt-3 flex flex-col flex-grow justify-between">
                                 <div>
                                     <div className="font-medium text-yd-label-3 xlg:text-[14px] text-yd-typo-title line-clamp-1 min-h-[22px] xlg:min-h-[24px] !font-[400] capitalize">
@@ -584,7 +581,7 @@ const DetailProducts = () => {
                         </div>
 
                         <div className="products w-64 flex-shrink-0">
-                            <div className="img-product h-40 bg-gray-200"></div>
+                            <div className="img-product h-80 bg-gray-200"></div>
                             <div className="pt-2 xlg:pt-3 flex flex-col flex-grow justify-between">
                                 <div>
                                     <div className="font-medium text-yd-label-3 xlg:text-[14px] text-yd-typo-title line-clamp-1 min-h-[22px] xlg:min-h-[24px] !font-[400] capitalize">
@@ -603,9 +600,6 @@ const DetailProducts = () => {
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div className="button2">
-                        <button id="prevBtn"></button>
                     </div>
                 </div>
             </section>
