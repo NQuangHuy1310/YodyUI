@@ -2,8 +2,8 @@ import config from '~/config'
 import MainLayout from '~/layouts/MainLayout'
 import { route } from '~/models'
 import Home from '~/pages/Home'
-import Login from '~/pages/Login/Login'
-import Register from '~/pages/Register/Register'
+import Login from '~/pages/Login'
+import Register from '~/pages/Register'
 
 // các trang không cần đăng nhập vào vào được
 const publicRoutes: route[] = [
