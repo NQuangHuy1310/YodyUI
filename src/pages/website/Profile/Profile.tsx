@@ -2,11 +2,24 @@ import React from 'react'
 import { Layout, Input, Form, Button, Radio, Select, Row, Col, Avatar, Upload } from 'antd'
 import { theme } from 'antd'
 import { UploadOutlined } from '@ant-design/icons'
+import axiosConfig from '~/config/axios'
+import { toast } from 'react-toastify'
 
 const { Content } = Layout
 const { Option } = Select
 
 const User: React.FC = () => {
+    const [form] = Form.useForm() // Sử dụng form của Ant Design
+
+    const onFinish = async (values: any) => {
+        try {
+            const response = await axiosConfig.post('/users/update', values) // Gửi dữ liệu lên server
+            toast.success('Cập nhật thành công!')
+        } catch (error) {
+            toast.error('Đã xảy ra lỗi!')
+        }
+    }
+
     const {
         token: { colorBgContainer, borderRadiusLG }
     } = theme.useToken()
@@ -17,7 +30,7 @@ const User: React.FC = () => {
     const years = Array.from({ length: 100 }, (_, i) => new Date().getFullYear() - i)
 
     return (
-        <Layout>
+        <Layout className="mt-20">
             <Content style={{ padding: '0 48px' }}>
                 <div
                     style={{
@@ -38,11 +51,13 @@ const User: React.FC = () => {
                     <Row gutter={16}>
                         <Col span={16}>
                             <Form
+                                form={form}
                                 name="basic"
                                 labelCol={{ span: 8 }}
                                 wrapperCol={{ span: 16 }}
                                 initialValues={{ remember: true }}
                                 autoComplete="off"
+                                onFinish={onFinish} // Thêm sự kiện onFinish
                             >
                                 <Form.Item
                                     label="Tên tài khoản"
@@ -134,8 +149,29 @@ const User: React.FC = () => {
                                 <div style={{ textAlign: 'center' }} className="pb-6">
                                     <Avatar size={128} alt="User Avatar" />
                                     <br /> <br />
-                                    <Upload>
-                                        <Button>Chọn ảnh</Button>
+                                    <Upload
+                                        customRequest={({ file, onSuccess, onError }) => {
+                                            const formData = new FormData()
+                                            formData.append('file', file)
+
+                                            axiosConfig
+                                                .post('/upload', formData, {
+                                                    headers: {
+                                                        'Content-Type': 'multipart/form-data'
+                                                    }
+                                                })
+                                                .then(() => {
+                                                    toast.success('Tải lên thành công!')
+                                                    if (onSuccess) onSuccess(file) // Kiểm tra trước khi gọi onSuccess
+                                                })
+                                                .catch((error) => {
+                                                    toast.error('Đã xảy ra lỗi!')
+                                                    if (onError) onError(error) // Kiểm tra trước khi gọi onError
+                                                })
+                                        }}
+                                        showUploadList={false} // Nếu không muốn hiển thị danh sách file đã upload
+                                    >
+                                        <Button icon={<UploadOutlined />}>Chọn ảnh</Button>
                                     </Upload>
                                 </div>
                             </div>
