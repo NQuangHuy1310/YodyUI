@@ -8,6 +8,7 @@ import Register from '~/pages/Register/Register'
 import DetailProducts from '~/pages/website/DetailProduct/DetailProducts'
 import User from '~/pages/website/Profile/Profile'
 
+
 // các trang không cần đăng nhập vào vào được
 const publicRoutes: route[] = [
     { path: config.routes.home, element: Home, layout: MainLayout },

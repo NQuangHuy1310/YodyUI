@@ -1,6 +1,7 @@
 import React from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { authAdd, } from '~/apis/authRequest';
 import config from '~/config';
 
 interface IRegisterForm {
@@ -11,9 +12,17 @@ interface IRegisterForm {
 }
 
 const Register: React.FC = () => {
+  const navigate = useNavigate()
   const { register, handleSubmit, formState: { errors } } = useForm<IRegisterForm>();
-  const onSubmit: SubmitHandler<IRegisterForm> = data => {
-    console.log(data);
+  const onSubmit: SubmitHandler<IRegisterForm> = async (data) => {
+    try{
+      await authAdd.authRegister({
+        user_name:data.name,
+        user_email: data.email,
+        user_password: data.password
+      })
+      navigate('/login')
+    }catch(error){}
   };
 
   return (
